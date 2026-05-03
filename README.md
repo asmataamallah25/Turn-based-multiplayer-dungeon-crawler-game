@@ -56,6 +56,10 @@ The game utilizes a **Client-Server** model:
 
 \- **Commit 2:** Grid system and Tilemap implementation.
 
+\- **Commit 3:** Networked camera follow system.
+
+\- **Commit 4:** Turn manager system with synchronized 5-second timer.
+
 
 
 **Developed by: asmataamallah25🛡️**
