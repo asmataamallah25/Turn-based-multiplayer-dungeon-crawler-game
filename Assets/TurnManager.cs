@@ -7,11 +7,12 @@ public class TurnManager : NetworkBehaviour
     public NetworkVariable<int> activePlayerIndex = new NetworkVariable<int>(0);
     
     // The countdown timer, synchronized across all clients
-    public NetworkVariable<float> turnTimer = new NetworkVariable<float>(10f);
+    // Set to 5 seconds for the turn duration
+    public NetworkVariable<float> turnTimer = new NetworkVariable<float>(5.0f);
 
     private void Update()
     {
-        // Only the server handles the logic to ensure synchronization
+        // Only the server handles logic to ensure synchronization
         if (!IsServer) return;
 
         if (turnTimer.Value > 0)
@@ -27,8 +28,8 @@ public class TurnManager : NetworkBehaviour
 
     private void EndTurn()
     {
-        // Reset timer and move to the next player index
-        turnTimer.Value = 10f;
+        // Reset timer to 5 seconds and move to next player index
+        turnTimer.Value = 5.0f;
         activePlayerIndex.Value = (activePlayerIndex.Value + 1) % NetworkManager.Singleton.ConnectedClientsList.Count;
     }
 }
